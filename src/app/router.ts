@@ -12,7 +12,7 @@ export const router = createRouter({
                     path: '',
                     name: 'contacts',
                     component: (): Component => import('pages/(app)/contacts/index.vue')
-                }
+                },
             ]
         }
     ] as RouteRecordRaw[]

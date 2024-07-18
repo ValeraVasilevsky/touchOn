@@ -20,12 +20,27 @@ export const useContactStore = defineStore('contacts', () => {
         }
     }
 
+    const setSelectedContact = (contactId?: number): void => {
+        if (!contactId) {
+            selectedContact.value = null;
+            return
+        }
+
+        const candidate = contacts.value.find(({ id }) => id === contactId)
+        if (!candidate) {
+            selectedContact.value = null
+            return
+        };
+        selectedContact.value = candidate
+    }
+
     return {
         contacts,
         isLoading,
         selectedContact,
 
-        getContacts
+        getContacts,
+        setSelectedContact
     }
 }, {
     persist: {

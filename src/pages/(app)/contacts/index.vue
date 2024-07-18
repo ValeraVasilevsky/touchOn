@@ -6,6 +6,10 @@
       <Loader v-if="contactLoading" />
       <ContactList v-else :contacts="filteredContacts" />
     </div>
+
+    <Modal v-model:isOpen="isOpen" title="Добавить контакт">
+      <ContactForm />
+    </Modal>
   </div>
 </template>
 
@@ -13,13 +17,14 @@
 import { computed, onMounted, ref } from "vue";
 
 import { SearchBar } from "widgets/search-bar";
-import { ContactList } from "entities/contacts/ui/contacts-list";
-import { Loader } from "shared/ui/loader";
+import { ContactList, ContactForm } from "entities/contacts/ui";
+import { Modal, Loader } from "shared/ui";
 import { Contact, useContactStore } from "features/contacts";
 
 import styles from "./styles.module.scss";
 
 const searchTerm = ref<string>("");
+const isOpen = ref<boolean>(true);
 const contactStore = useContactStore();
 
 const contactLoading = computed((): boolean => contactStore.isLoading);
@@ -35,7 +40,7 @@ const filteredContacts = computed((): Contact[] => {
   );
 });
 
-onMounted(() => {
-  contactStore.getContacts();
+onMounted(async () => {
+  await contactStore.getContacts();
 });
 </script>

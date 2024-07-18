@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { BaseInput } from "shared/ui/base-input";
+import { BaseInput } from "shared/ui";
 import SearchIcon from "shared/icons/search.svg";
 
 import styles from "./styles.module.scss";

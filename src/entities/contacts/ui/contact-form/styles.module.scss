@@ -1,0 +1,13 @@
+.form {
+  & .inputs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $spacing-xl;
+
+    & > div {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+}
