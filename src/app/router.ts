@@ -7,6 +7,13 @@ export const router = createRouter({
         {
             path: '/',
             component: (): Component => import('pages/(app)/layout.vue'),
+            children: [
+                {
+                    path: '',
+                    name: 'contacts',
+                    component: (): Component => import('pages/(app)/contacts/index.vue')
+                }
+            ]
         }
     ] as RouteRecordRaw[]
 })

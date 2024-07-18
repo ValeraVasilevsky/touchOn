@@ -29,7 +29,7 @@ interface BaseInputProps {
   placeholder?: string;
   error?: boolean;
   errorMessage?: string;
-  variant: "phone" | "password" | "text" | "email" | string;
+  variant?: "phone" | "password" | "text" | "email" | string;
   required?: boolean;
 }
 type BaseInputEmits = {
@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<BaseInputProps>(), {
   placeholder: "",
   error: false,
   errorMessage: "",
-  variant: "",
+  variant: "text",
   required: false,
 });
 const emits = defineEmits<BaseInputEmits>();

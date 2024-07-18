@@ -1,15 +1,34 @@
 <template>
   <div :class="styles.container">
-    <BaseInput v-model:value="searchTerm" placeholder="Поиск" required />
+    <BaseInput v-model:value="modelValue" placeholder="Поиск">
+      <template #left-icon>
+        <SearchIcon />
+      </template>
+    </BaseInput>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
 import { BaseInput } from "shared/ui/base-input";
+import SearchIcon from "shared/icons/search.svg";
 
 import styles from "./styles.module.scss";
+import { computed } from "vue";
 
-const searchTerm = ref<string>("");
+interface SearchBarProps {
+  value: string;
+}
+type SearchBarEmits = {
+  "update:value": [string];
+};
+
+const props = defineProps<SearchBarProps>();
+const emits = defineEmits<SearchBarEmits>();
+
+const modelValue = computed({
+  get: (): string => props.value,
+  set: (newValue: string): void => {
+    emits("update:value", newValue);
+  },
+});
 </script>
