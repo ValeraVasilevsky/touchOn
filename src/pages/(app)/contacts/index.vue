@@ -3,29 +3,31 @@
     <SearchBar v-model:value="searchTerm" :class="styles.searchBar" />
 
     <div :class="styles.wrapper">
-      <ContactList :contacts="filteredContacts" />
+      <Loader v-if="contactLoading" />
+      <ContactList v-else :contacts="filteredContacts" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 import { SearchBar } from "widgets/search-bar";
 import { ContactList } from "entities/contacts/ui/contacts-list";
-import { Contact, fetchContacts } from "features/contacts";
+import { Loader } from "shared/ui/loader";
+import { Contact, useContactStore } from "features/contacts";
 
 import styles from "./styles.module.scss";
 
-const isLoading = ref<boolean>(false);
 const searchTerm = ref<string>("");
-const contacts = ref<Contact[]>([]);
+const contactStore = useContactStore();
 
+const contactLoading = computed((): boolean => contactStore.isLoading);
 const filteredContacts = computed((): Contact[] => {
-  if (!searchTerm.value.length) return contacts.value;
+  if (!searchTerm.value.length) return contactStore.contacts;
 
   const search = searchTerm.value.toLowerCase();
-  return contacts.value.filter(
+  return contactStore.contacts.filter(
     (contact) =>
       contact.name.toLowerCase().includes(search) ||
       contact.phone.toLowerCase().includes(search) ||
@@ -33,18 +35,7 @@ const filteredContacts = computed((): Contact[] => {
   );
 });
 
-const getContacts = async (): Promise<void> => {
-  isLoading.value = true;
-
-  try {
-    const fetchedContacts = await fetchContacts();
-    contacts.value = fetchedContacts;
-  } catch (error) {
-    contacts.value = [];
-  } finally {
-    isLoading.value = false;
-  }
-};
-
-await getContacts();
+onMounted(() => {
+  contactStore.getContacts();
+});
 </script>

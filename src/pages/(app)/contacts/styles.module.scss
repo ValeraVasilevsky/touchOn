@@ -4,6 +4,7 @@
   align-items: flex-start;
   flex-direction: column;
   gap: $spacing-xl;
+  height: calc(100% - $spacing-xl * 2);
 
   padding: $spacing-xl;
 
@@ -14,5 +15,7 @@
 
   & .wrapper {
     width: 100%;
+    height: 100%;
+    display: flex;
   }
 }
