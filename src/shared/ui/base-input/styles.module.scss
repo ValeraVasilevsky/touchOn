@@ -10,11 +10,20 @@
     margin-bottom: $spacing-4xl;
   }
 
+  &:has(.icon) {
+    .input {
+      padding-left: calc($spacing-3xl * 2);
+    }
+  }
+
   & .icon {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     color: $black;
+    left: $spacing-l;
+    z-index: 2;
 
     & svg {
       width: $icon-size-m;

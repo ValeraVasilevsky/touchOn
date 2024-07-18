@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding: $spacing-xl;
+
+  & .search-bar {
+    margin-left: auto;
+    width: 280px;
+  }
+}
