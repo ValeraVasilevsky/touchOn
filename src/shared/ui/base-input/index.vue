@@ -1,6 +1,6 @@
 <template>
   <div :class="formStyles.container">
-    <span v-if="isShowSlot" :class="[styles.left, styles.icon]">
+    <span v-if="isShowSlot" :class="styles.icon">
       <slot name="left-icon" />
     </span>
 
