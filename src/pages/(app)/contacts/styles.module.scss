@@ -2,11 +2,27 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  flex-direction: column;
+  gap: $spacing-xl;
+  height: calc(100% - $spacing-xl * 2);
 
   padding: $spacing-xl;
 
-  & .search-bar {
+  & .header {
     margin-left: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $spacing-xl;
+  }
+
+  & .search-bar {
     width: 280px;
+  }
+
+  & .wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
   }
 }

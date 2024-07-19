@@ -1,0 +1,16 @@
+.container {
+  border: 1px solid $green;
+  border-radius: $radius-xl;
+  padding: $spacing-xl;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  cursor: pointer;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}

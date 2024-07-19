@@ -1,0 +1,16 @@
+.button {
+  outline: 0;
+  border: 0;
+
+  cursor: pointer;
+
+  background-color: $gray;
+  padding: $spacing-l $spacing-xl;
+  border-radius: $radius-s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $black;
+}

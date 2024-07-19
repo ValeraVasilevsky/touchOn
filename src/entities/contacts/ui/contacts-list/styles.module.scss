@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: max-content;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: $spacing-2xl;
+
+  width: 100%;
+  height: fit-content;
+}
