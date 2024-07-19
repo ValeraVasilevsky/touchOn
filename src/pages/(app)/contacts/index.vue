@@ -1,6 +1,9 @@
 <template>
   <div :class="styles.container">
     <div :class="styles.header">
+      <p v-if="!filteredContacts.length && searchTerm.length">
+        Ничего не найдено
+      </p>
       <SearchBar v-model:value="searchTerm" :class="styles.searchBar" />
       <BaseButton @click="openModal"> Добавить </BaseButton>
     </div>
@@ -44,11 +47,8 @@ const filteredContacts = computed((): Contact[] => {
   if (!searchTerm.value.length) return contactStore.contacts;
 
   const search = searchTerm.value.toLowerCase();
-  return contactStore.contacts.filter(
-    (contact) =>
-      contact.name.toLowerCase().includes(search) ||
-      contact.phone.toLowerCase().includes(search) ||
-      contact.email.toLowerCase().includes(search)
+  return contactStore.contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(search)
   );
 });
 
