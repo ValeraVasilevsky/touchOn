@@ -64,6 +64,13 @@ export const useContactStore = defineStore(
       }
     };
 
+    const remove = (contact: Contact): void => {
+      const candidate = contacts.value.find(({ id }) => id === contact.id);
+      if (!candidate) return;
+
+      contacts.value = contacts.value.filter(({ id }) => id !== contact.id);
+    };
+
     return {
       contacts,
       isLoading,
@@ -73,6 +80,7 @@ export const useContactStore = defineStore(
       setSelectedContact,
       create,
       update,
+      remove,
     };
   },
   {

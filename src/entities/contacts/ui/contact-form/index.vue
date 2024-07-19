@@ -29,6 +29,13 @@
         {{ formAction }}
       </BaseButton>
       <BaseButton @click="onClick" :disabled="isLoading"> Отменить </BaseButton>
+      <BaseButton
+        v-if="isShowRemove"
+        @click="removeContact"
+        :disabled="isLoading"
+      >
+        Удалить
+      </BaseButton>
     </div>
   </form>
 </template>
@@ -57,6 +64,7 @@ const formType = computed(
 const formAction = computed((): string =>
   formType.value === "add" ? "Создать" : "Сохранить"
 );
+const isShowRemove = computed((): boolean => formType.value === "edit");
 
 const { values, errors, isLoading, submit, clearErrors } = useForm(
   contactSchema,
@@ -105,5 +113,10 @@ const resetForm = (): void => {
 const onClick = (): void => {
   resetForm();
   emits("close");
+};
+const removeContact = (): void => {
+  if (!contactStore.selectedContact) return;
+  contactStore.remove(contactStore.selectedContact);
+  onClick();
 };
 </script>

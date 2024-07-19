@@ -1,15 +1,13 @@
 <template>
   <Teleport to="body">
     <Transition name="modal">
-      <div v-if="props.isOpen" :class="styles.modalSlide">
-        <div :class="styles.content">
-          <div :class="styles.header">
-            <p :class="styles.title">{{ props.title }}</p>
-
-            <div @click.stop="closeModal" :class="styles.close"></div>
+      <div v-if="props.isOpen" class="modal-slide">
+        <div class="modal-slide__content">
+          <div class="modal-slide__header">
+            <p class="modal-slide__title">{{ props.title }}</p>
           </div>
 
-          <div :class="styles.body">
+          <div class="modal-slide__body">
             <slot />
           </div>
         </div>
@@ -19,8 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import styles from "./styles.module.scss";
-
 interface ModalProps {
   title: string;
   isOpen: boolean;
@@ -31,8 +27,8 @@ type ModalEmits = {
 
 const props = defineProps<ModalProps>();
 const emits = defineEmits<ModalEmits>();
-
-const closeModal = (): void => {
-  emits("update:isOpen", props.isOpen);
-};
 </script>
+
+<style lang="scss">
+@import "./styles.scss";
+</style>
