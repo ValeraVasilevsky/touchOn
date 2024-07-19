@@ -8,8 +8,15 @@
 
   padding: $spacing-xl;
 
-  & .search-bar {
+  & .header {
     margin-left: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $spacing-xl;
+  }
+
+  & .search-bar {
     width: 280px;
   }
 

@@ -30,7 +30,6 @@
     padding: $spacing-xl;
     border-radius: $radius-s;
     width: 60%;
-    min-height: 200px;
   }
 
   & .body {
@@ -52,11 +51,11 @@
 
 .modal-enter-active,
 .modal-leave-active {
-  transition: transform 0.3s;
+  transition: transform 3s;
 
   .modal-slide {
     & .content {
-      transition: transform 0.3s ease-out;
+      transition: transform 3s ease-out;
     }
   }
 }

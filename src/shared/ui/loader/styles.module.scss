@@ -7,6 +7,11 @@
   border-radius: 100%;
   display: inline-block;
   animation: rotation 1s linear infinite;
+
+  &.s {
+    width: 12px;
+    height: 12px;
+  }
 }
 
 @keyframes rotation {

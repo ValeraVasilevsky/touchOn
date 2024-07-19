@@ -4,6 +4,7 @@
       v-for="contact of props.contacts"
       :key="String(contact.id)"
       :contact="contact"
+      @select="onSelect"
     />
   </div>
 </template>
@@ -17,5 +18,14 @@ import styles from "./styles.module.scss";
 interface ContactListProps {
   contacts: Contact[];
 }
+type ContactListEmits = {
+  select: [value: number];
+};
+
 const props = defineProps<ContactListProps>();
+const emits = defineEmits<ContactListEmits>();
+
+const onSelect = (contactId: number): void => {
+  emits("select", contactId);
+};
 </script>

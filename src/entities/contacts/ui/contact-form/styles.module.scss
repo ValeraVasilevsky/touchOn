@@ -10,4 +10,12 @@
       max-width: 400px;
     }
   }
+
+  & .actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: $spacing-xl;
+    margin-top: $spacing-xl;
+  }
 }

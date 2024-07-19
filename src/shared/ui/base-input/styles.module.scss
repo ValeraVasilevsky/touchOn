@@ -41,7 +41,9 @@
     border: 1px solid transparent;
     background-color: $gray;
     color: $black;
-    transition: border-color 100ms ease-out, background-color 100ms ease-out;
+    transition:
+      border-color 100ms ease-out,
+      background-color 100ms ease-out;
     padding: $spacing-l;
 
     &:hover {
@@ -73,4 +75,5 @@
   text-align: left;
   color: $error;
   margin-top: $spacing-s;
+  font-size: $spacing-xl;
 }

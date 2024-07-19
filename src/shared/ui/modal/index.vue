@@ -1,11 +1,7 @@
 <template>
   <Teleport to="body">
     <Transition name="modal">
-      <div
-        v-if="props.isOpen"
-        @mouseup.self="closeModal"
-        :class="styles.modalSlide"
-      >
+      <div v-if="props.isOpen" :class="styles.modalSlide">
         <div :class="styles.content">
           <div :class="styles.header">
             <p :class="styles.title">{{ props.title }}</p>
